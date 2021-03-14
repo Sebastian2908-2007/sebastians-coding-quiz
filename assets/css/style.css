@@ -55,3 +55,13 @@ body {
 .hide {
     display: none;
 }
+ p {
+    background-color: red;
+    display:inline-flex;
+    font-size: 50px;
+    height: 70px;
+    width:200px;
+    margin: 0;
+
+
+} 
