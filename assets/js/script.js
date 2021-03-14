@@ -8,6 +8,8 @@ let shuffledQuestions, curentQuestionsIndex;
 var questionElement = document.getElementById("question");
 var answerButtonsElement = document.getElementById("answer-buttons");
 var score = 0;
+var keepScore = document.querySelector(".append-score");
+var playerScore = localStorage.getItem("score","value");
  function updateCountdown () {
     
     const minutes = Math.floor(time / 60);
@@ -49,6 +51,7 @@ startButton.addEventListener("click", startGame);
         button.classList.add("btn")
         if (answer.correct) {
             button.dataset.correct = answer.correct
+           
         }
         button.addEventListener("click", selectAnswer);
         answerButtonsElement.appendChild(button);
@@ -82,12 +85,14 @@ nextButton.classList.remove("hide")
     startButton.classList.remove("hide");
 
 }
-   //  my score keeping function
- function scoreCurrent (correct) {
-    // var button = e.curentQuestionsIndex
-    // var plusOne = button.dataset.correct ;
-        if (questions.text == correct == true) {
+ 
+   //  my score keeping function sb need to put local storage function
+ function scoreCurrent () {
+  
+   
+        if (selectedButton.dataset.correct) {
            score ++; console.log(score);
+           localStore();
        }else {
            alert("incorrect ha ha ha ha ha");
        }
@@ -168,3 +173,7 @@ console.log(score);
 })
 
  
+function localStore () {
+    localStorage.setItem("score", score);
+    keepScore.innerHTML = playerScore;
+}
